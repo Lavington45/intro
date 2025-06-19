@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+  <title>Welcome to Lavington's Space</title>
+   <link rel="stylesheet" href="style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<button onclick="toggleDarkMode()">toggle Dark Mode</button>
+  <header>
+   <h1>Hello, I'm Lavington</h1>
+   <p>Welcome to my coner of the web!</p>
+ </header>
+<section>
+ <h2>My projects</h2>
+  <ul>
+   <li><i class="fas fa-calculator"></i>VB.NET Grade Calculator</li>
+   <li><i class="fas fa-code"></i>C++ Number Pattern Printer</li>
+    </ul>
+	 <h2>Favorite qoute</h2>
+	  <blockquote>
+	   "The inportant thing is not to stop questioning. Curiosity has it's own reason for existing."
+        <br>- Albert Einstein
+       </blockquote>
+  </section>
+  <form id="contactForm">
+	  <input type="text" placeholder="Your Name" required><br>
+	  <input type="email" placeholder="Your Email" required><br>
+	  <textarea placeholder="Your Message" rows="4" required></textarea><br>
+	 <button type="submit">Send Message</button>
+  </form>
+  <script>
+   const form = document.getElementById('contactForm');
+   form.addEventListener('submit', async (e) =>{
+     e.preventDefault();
+	 const formData = new FormData(form);
+	 const payload = Object.fromEntries(formData.entries());
+	 
+	 const res = await fetch('/api/contact', {
+	 method: 'POST',
+	 headers: { 'Content-Type': 'application/json' },
+	 body: JSON.stringify(payload)
+	 });
+	 
+	 if (res.ok) {
+	 alert('Thanks for your message!');
+	 } else {
+	 alert('Oops! Something went wrong.');
+	 }
+	 });
+	 </script>
+  <footer>
+    <p>&copy; 2025 Lavington. Built with curiosity and notepad++!</p>
+  </footer>
+ <script>
+     function toggleDarkMode() {
+	  documment.body.classList.toggle('dark-mode');
+	  }
+    </script>
+	<div class="typewritter">
+	 <h1>Hello, I'm Lavington</h1>
+	</div>
+  </body>
+ </html>
+   
